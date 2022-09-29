@@ -8,8 +8,7 @@
 #include "modes/ProjectM.hpp"
 #include "modes/RivalsOfAether.hpp"
 #include "modes/Ultimate.hpp"
-#include "modes/extra/MultiVersus.hpp"
-#include "modes/extra/MultiVersusLBX.hpp"
+#include "modes/extra/MultiVersusLBXFurd.hpp"
 
 extern KeyboardMode *current_kb_mode;
 
@@ -38,7 +37,7 @@ void select_mode(CommunicationBackend *backend) {
         if (inputs.l) {
             set_mode(backend, new Melee20Button(socd::SOCD_2IP_NO_REAC));
         } else if (inputs.left) {
-            set_mode(backend, new MultiVersusLBX(socd::SOCD_2IP));
+            set_mode(backend, new MultiVersusLBXFurd(socd::SOCD_2IP));
         } else if (inputs.down) {
             set_mode(backend, new Ultimate(socd::SOCD_2IP));
         } else if (inputs.right) {
