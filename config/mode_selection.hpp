@@ -8,8 +8,7 @@
 #include "modes/ProjectM.hpp"
 #include "modes/RivalsOfAether.hpp"
 #include "modes/Ultimate.hpp"
-#include "modes/extra/MultiVersus.hpp"
-#include "modes/extra/MultiVersusLBX.hpp"
+#include "modes/extra/MultiVersusLBXFurd.hpp"
 
 extern KeyboardMode *current_kb_mode;
 
