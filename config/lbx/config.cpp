@@ -132,8 +132,8 @@ void setup() {
         backends = new CommunicationBackend *[backend_count] { primary_backend };
     }
 
-    // Default to Melee mode.
-    primary_backend->SetGameMode(new Melee20Button(socd::SOCD_2IP_NO_REAC));
+    // Default to MultiVersus mode.
+    primary_backend->SetGameMode(new MultiVersusLBXFurd(socd::SOCD_2IP));
 }
 
 void loop() {
