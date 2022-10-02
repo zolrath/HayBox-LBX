@@ -9,6 +9,7 @@
 #include "modes/RivalsOfAether.hpp"
 #include "modes/Ultimate.hpp"
 #include "modes/extra/MultiVersusLBXFurd.hpp"
+#include "modes/extra/StriveKeyboardMode.hpp"
 
 extern KeyboardMode *current_kb_mode;
 
@@ -57,6 +58,8 @@ void select_mode(CommunicationBackend *backend) {
     } else if (inputs.mod_y && !inputs.mod_x && inputs.start) {
         if (inputs.l) {
             set_mode(backend, new DefaultKeyboardMode(socd::SOCD_2IP));
+        } else if (inputs.left) {
+            set_mode(backend, new StriveKeyboardMode(socd::SOCD_NEUTRAL));
         }
     }
 }
