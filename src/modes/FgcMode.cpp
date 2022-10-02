@@ -23,8 +23,10 @@ void FgcMode::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
 
     // Menu keys
     outputs.start = inputs.start;
-    outputs.select = inputs.c_left;
-    outputs.home = inputs.c_down;
+    outputs.select = inputs.mod_y;
+    outputs.home = inputs.nunchuk_c;
+    outputs.leftStickClick = inputs.c_left || inputs.a;
+    outputs.rightStickClick = inputs.c_right;
 
     // Right hand bottom row
     outputs.a = inputs.b;
