@@ -118,13 +118,15 @@ void setup() {
             primary_backend =
                 new N64Backend(input_sources, input_source_count, 60, pinout.joybus_data);
         } else if (button_holds.a) {
-            // Hold A on plugin for GameCube adapter.
-            primary_backend =
-                new GamecubeBackend(input_sources, input_source_count, 0, pinout.joybus_data);
-        } else {
-            // Default to GameCube/Wii.
+            // Hold A to GameCube/Wii.
+            // Swap 125 Hz polling rate fix to hold A, use this if plugging into a GameCube to play
+            // Melee
             primary_backend =
                 new GamecubeBackend(input_sources, input_source_count, 125, pinout.joybus_data);
+        } else {
+            // Default to GameCube adapter.
+            primary_backend =
+                new GamecubeBackend(input_sources, input_source_count, 0, pinout.joybus_data);
         }
 
         // If not DInput then only using 1 backend (no input viewer).
