@@ -9,6 +9,7 @@
 #include "modes/RivalsOfAether.hpp"
 #include "modes/Ultimate.hpp"
 #include "modes/extra/MultiVersusLBXFurd.hpp"
+#include "modes/extra/StriveKeyboardMode.hpp"
 
 extern KeyboardMode *current_kb_mode;
 
@@ -37,17 +38,19 @@ void select_mode(CommunicationBackend *backend) {
         if (inputs.l) {
             set_mode(backend, new MultiVersusLBXFurd(socd::SOCD_2IP));
         } else if (inputs.left) {
-            set_mode(backend, new Melee20Button(socd::SOCD_2IP_NO_REAC));
-        } else if (inputs.down) {
-            set_mode(backend, new Ultimate(socd::SOCD_2IP));
-        } else if (inputs.right) {
             set_mode(backend, new FgcMode(socd::SOCD_NEUTRAL));
+        } else if (inputs.down) {
+            set_mode(backend, new Melee20Button(socd::SOCD_2IP_NO_REAC));
+        } else if (inputs.right) {
+            set_mode(backend, new Ultimate(socd::SOCD_2IP));
         } else if (inputs.b) {
             set_mode(backend, new RivalsOfAether(socd::SOCD_2IP));
         }
     } else if (inputs.mod_y && !inputs.mod_x && inputs.start) {
         if (inputs.l) {
             set_mode(backend, new DefaultKeyboardMode(socd::SOCD_2IP));
+        } else if (inputs.left) {
+            set_mode(backend, new StriveKeyboardMode(socd::SOCD_NEUTRAL));
         }
     }
 }
