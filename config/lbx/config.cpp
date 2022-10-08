@@ -1,7 +1,7 @@
 #include "comms/B0XXInputViewer.hpp"
-#include "comms/DInputBackend.hpp"
 #include "comms/GamecubeBackend.hpp"
 #include "comms/N64Backend.hpp"
+#include "comms/XInputBackend.hpp"
 #include "config/mode_selection.hpp"
 #include "core/CommunicationBackend.hpp"
 #include "core/InputMode.hpp"
@@ -99,7 +99,7 @@ void setup() {
     digitalWrite(pinout.mux, LOW);
     brook_mode = false;
 
-    CommunicationBackend *primary_backend = new DInputBackend(input_sources, input_source_count);
+    CommunicationBackend *primary_backend = new XInputBackend(input_sources, input_source_count);
     delay(500);
     bool usb_connected = UDADDR & _BV(ADDEN);
 
