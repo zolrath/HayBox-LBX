@@ -39,6 +39,13 @@ void InputMode::HandleSocd(InputState &inputs) {
                     _socd_states[i]
                 );
                 break;
+            case socd::SOCD_PRIORITY:
+                socd::priority(
+                    inputs.*(pair.input_dir1),
+                    inputs.*(pair.input_dir2),
+                    pair.prioritize_input_1
+                );
+                break;
             case socd::SOCD_KEYBOARD:
                 break;
         }
