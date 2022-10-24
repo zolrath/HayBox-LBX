@@ -3,7 +3,8 @@
 FgcMode::FgcMode(socd::SocdType socd_type) : ControllerMode(socd_type) {
     _socd_pair_count = 1;
     _socd_pairs = new socd::SocdPair[_socd_pair_count]{
-        socd::SocdPair{&InputState::left, &InputState::right},
+        socd::SocdPair{&InputState::left, &InputState::right, false},
+        socd::SocdPair{ &InputState::up,  &InputState::down,  true },
     };
 }
 
