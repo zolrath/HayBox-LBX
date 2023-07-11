@@ -19,14 +19,16 @@ void FgcMode::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
     outputs.dpadLeft = inputs.left;
     outputs.dpadRight = inputs.right;
     outputs.dpadDown = inputs.down;
-    outputs.dpadUp = inputs.mod_x || inputs.c_up;
+    outputs.dpadUp = inputs.mod_x || inputs.a;
 
     // Menu keys
+    // nunchuk c is the top button of the left bottom cluster
     outputs.start = inputs.start;
-    outputs.select = inputs.mod_y;
-    outputs.home = inputs.nunchuk_c;
-    outputs.leftStickClick = inputs.c_left || inputs.a;
-    outputs.rightStickClick = inputs.c_right;
+    outputs.select = inputs.nunchuk_c;
+    //outputs.home = inputs.nunchuk_c;
+    // These seem inverted on xbox compared to what you'd expect??
+    outputs.rightStickClick = inputs.c_up;
+    outputs.leftStickClick = inputs.c_left;
 
     // Right hand bottom row
     outputs.a = inputs.b;
@@ -39,6 +41,16 @@ void FgcMode::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
     outputs.y = inputs.y;
     outputs.buttonR = inputs.lightshield;
     outputs.buttonL = inputs.midshield;
+
+
+    // MY activates C-Stick to D-Pad conversion.
+    if ((inputs.mod_y && !inputs.mod_x) || inputs.nunchuk_c) {
+        outputs.dpadLeft = inputs.c_left;
+        outputs.dpadRight = inputs.c_right;
+        outputs.dpadDown = inputs.c_down;
+        outputs.dpadUp = inputs.c_up;
+    }
+
 }
 
 void FgcMode::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
