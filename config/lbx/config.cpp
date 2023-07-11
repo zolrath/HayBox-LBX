@@ -141,7 +141,9 @@ void setup() {
     // );
 
     // Default to MultiVersus mode.
-    primary_backend->SetGameMode(new MultiVersusLBXFurd(socd::SOCD_2IP));
+    // primary_backend->SetGameMode(new MultiVersusLBXFurd(socd::SOCD_2IP));
+    // Default to Fighting Game mode.
+    primary_backend->SetGameMode(new FgcMode(socd::SOCD_NEUTRAL));
 }
 
 void loop() {
