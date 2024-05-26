@@ -4,13 +4,13 @@
 #define ANALOG_STICK_NEUTRAL 128
 #define ANALOG_STICK_MAX 255
 
-MultiVersusLBXFurd::MultiVersusLBXFurd(socd::SocdType socd_type) : ControllerMode(socd_type) {
+MultiVersusLBXFurd::MultiVersusLBXFurd(socd::SocdType socd_type) {
     _socd_pair_count = 4;
     _socd_pairs = new socd::SocdPair[_socd_pair_count]{
-        socd::SocdPair{&InputState::left,    &InputState::right  },
-        socd::SocdPair{ &InputState::down,   &InputState::up     },
-        socd::SocdPair{ &InputState::c_left, &InputState::c_right},
-        socd::SocdPair{ &InputState::c_down, &InputState::c_up   },
+        socd::SocdPair{ &InputState::left,   &InputState::right   },
+        socd::SocdPair{ &InputState::down,   &InputState::up      },
+        socd::SocdPair{ &InputState::c_left, &InputState::c_right },
+        socd::SocdPair{ &InputState::c_down, &InputState::c_up    },
     };
 }
 
@@ -63,7 +63,7 @@ void MultiVersusLBXFurd::UpdateDigitalOutputs(InputState &inputs, OutputState &o
         outputs.y = inputs.b;
 
         // box layout Z = Dodge - MV default B button
-        // OR in case nunchuhk Z already pressed
+        // OR in case nunchuck Z already pressed
         // FURD: Keep dodge directional in mod_x to allow neutral attacks with normal dodges.
         // outputs.b = outputs.b || inputs.z;
 

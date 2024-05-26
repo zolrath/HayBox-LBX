@@ -21,50 +21,50 @@ KeyboardMode *current_kb_mode = nullptr;
 bool brook_mode = false;
 
 GpioButtonMapping button_mappings[] = {
-    {&InputState::l,            11},
-    { &InputState::left,        15},
-    { &InputState::down,        16},
-    { &InputState::right,       14},
+    { &InputState::l,           11 },
+    { &InputState::left,        15 },
+    { &InputState::down,        16 },
+    { &InputState::right,       14 },
 
-    { &InputState::mod_x,       3 },
-    { &InputState::mod_y,       0 },
-    { &InputState::nunchuk_c,   2 }, // Dpad Toggle button
+    { &InputState::mod_x,       3  },
+    { &InputState::mod_y,       0  },
+    { &InputState::nunchuk_c,   2  }, // Dpad Toggle button
 
-    { &InputState::start,       A5},
+    { &InputState::start,       A5 },
 
-    { &InputState::c_left,      4 },
-    { &InputState::c_up,        8 },
-    { &InputState::c_down,      1 },
-    { &InputState::a,           12},
-    { &InputState::c_right,     6 },
+    { &InputState::c_left,      4  },
+    { &InputState::c_up,        8  },
+    { &InputState::c_down,      1  },
+    { &InputState::a,           12 },
+    { &InputState::c_right,     6  },
 
-    { &InputState::b,           13},
-    { &InputState::x,           5 },
-    { &InputState::z,           10},
-    { &InputState::up,          9 },
+    { &InputState::b,           13 },
+    { &InputState::x,           5  },
+    { &InputState::z,           10 },
+    { &InputState::up,          9  },
 
-    { &InputState::r,           A0},
-    { &InputState::y,           A1},
-    { &InputState::lightshield, A2},
-    { &InputState::midshield,   A3},
+    { &InputState::r,           A0 },
+    { &InputState::y,           A1 },
+    { &InputState::lightshield, A2 },
+    { &InputState::midshield,   A3 },
 };
 size_t button_count = sizeof(button_mappings) / sizeof(GpioButtonMapping);
 
 GpioButtonMapping brook_button_mappings[] = {
-  // These are the only buttons which aren't also bound on brook board directly.
-  // And so the only buttons which can be bound to dpad_up and l3 on brook
-  // WARNING: Bind as few of these as you need, since it increases latency
-    {&InputState::l,          11},
+    // These are the only buttons which aren't also bound on brook board directly.
+    // And so the only buttons which can be bound to dpad_up and l3 on brook
+    // WARNING: Bind as few of these as you need, since it increases latency
+    { &InputState::l,         11 },
 
-    { &InputState::mod_x,     3 },
-    { &InputState::mod_y,     0 },
-    { &InputState::nunchuk_c, 2 },
+    { &InputState::mod_x,     3  },
+    { &InputState::mod_y,     0  },
+    { &InputState::nunchuk_c, 2  },
 
-    { &InputState::c_left,    4 },
-    { &InputState::c_up,      8 },
-    { &InputState::c_down,    1 },
-    { &InputState::a,         12},
-    { &InputState::c_right,   6 },
+    { &InputState::c_left,    4  },
+    { &InputState::c_up,      8  },
+    { &InputState::c_down,    1  },
+    { &InputState::a,         12 },
+    { &InputState::c_right,   6  },
 };
 
 Pinout pinout = {
@@ -141,9 +141,9 @@ void setup() {
     // );
 
     // Default to MultiVersus mode.
-    // primary_backend->SetGameMode(new MultiVersusLBXFurd(socd::SOCD_2IP));
+    primary_backend->SetGameMode(new MultiVersusLBXFurd(socd::SOCD_2IP));
     // Default to Fighting Game mode.
-    primary_backend->SetGameMode(new FgcMode(socd::SOCD_NEUTRAL));
+    // primary_backend->SetGameMode(new FgcMode(socd::SOCD_NEUTRAL, socd::SOCD_NEUTRAL));
 }
 
 void loop() {

@@ -4,13 +4,13 @@
 #define ANALOG_STICK_NEUTRAL 128
 #define ANALOG_STICK_MAX 255
 
-MultiVersusLBX::MultiVersusLBX(socd::SocdType socd_type) : ControllerMode(socd_type) {
+MultiVersusLBX::MultiVersusLBX(socd::SocdType socd_type) {
     _socd_pair_count = 4;
     _socd_pairs = new socd::SocdPair[_socd_pair_count]{
-        socd::SocdPair{&InputState::left,    &InputState::right  },
-        socd::SocdPair{ &InputState::down,   &InputState::up     },
-        socd::SocdPair{ &InputState::c_left, &InputState::c_right},
-        socd::SocdPair{ &InputState::c_down, &InputState::c_up   },
+        socd::SocdPair{ &InputState::left,   &InputState::right   },
+        socd::SocdPair{ &InputState::down,   &InputState::up      },
+        socd::SocdPair{ &InputState::c_left, &InputState::c_right },
+        socd::SocdPair{ &InputState::c_down, &InputState::c_up    },
     };
 }
 
@@ -27,7 +27,7 @@ MultiVersusLBX::MultiVersusLBX(socd::SocdType socd_type) : ControllerMode(socd_t
 // dpad right - taunt 2
 // dpad down - taunt 3
 // dpad left - taunt 4
-// Make sure to bind C buttons to right stick in Steam, in MV bindings 
+// Make sure to bind C buttons to right stick in Steam, in MV bindings
 // by default right stick translates to input direction + attack, can be
 // changed to specials in game bindings
 void MultiVersusLBX::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
@@ -45,11 +45,11 @@ void MultiVersusLBX::UpdateDigitalOutputs(InputState &inputs, OutputState &outpu
     // L or Nunchuk Z = Dodge  - MV default B button
     if (inputs.nunchuk_connected) {
         outputs.b = inputs.nunchuk_z;
-    } 
+    }
 
     // R = LT. Pickup item - MV default LT button
     outputs.triggerRDigital = inputs.r;
-    
+
     // box layout L - "neutral evade" - RT in MV, *** BIND IN GAME ***
     outputs.triggerLDigital = inputs.l;
 
