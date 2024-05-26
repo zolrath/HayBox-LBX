@@ -3,14 +3,14 @@
 FgcMode::FgcMode(socd::SocdType horizontal_socd, socd::SocdType vertical_socd) {
     _socd_pair_count = 4;
     _socd_pairs = new socd::SocdPair[_socd_pair_count]{
-        socd::SocdPair{&InputState::left,   &InputState::right, horizontal_socd         },
- /* Mod X override C-Up input if both are pressed. Without this, neutral SOCD doesn't work
-  properly if Down and both Up buttons are pressed, because it first resolves Down + Mod X
-  to set both as unpressed, and then it sees C-Up as pressed but not Down, so you get an up
-  input instead of neutral. */
-        socd::SocdPair{ &InputState::mod_x, &InputState::c_up,  socd::SOCD_DIR1_PRIORITY},
-        socd::SocdPair{ &InputState::down,  &InputState::mod_x, vertical_socd           },
-        socd::SocdPair{ &InputState::down,  &InputState::c_up,  vertical_socd           },
+        socd::SocdPair{ &InputState::left,  &InputState::right, horizontal_socd          },
+        /* Mod X override C-Up input if both are pressed. Without this, neutral SOCD doesn't work
+         properly if Down and both Up buttons are pressed, because it first resolves Down + Mod X
+         to set both as unpressed, and then it sees C-Up as pressed but not Down, so you get an up
+         input instead of neutral. */
+        socd::SocdPair{ &InputState::mod_x, &InputState::c_up,  socd::SOCD_DIR1_PRIORITY },
+        socd::SocdPair{ &InputState::down,  &InputState::mod_x, vertical_socd            },
+        socd::SocdPair{ &InputState::down,  &InputState::c_up,  vertical_socd            },
     };
 }
 
@@ -25,23 +25,22 @@ void FgcMode::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
     // nunchuk c is the top button of the left bottom cluster
     outputs.start = inputs.start;
     outputs.select = inputs.nunchuk_c;
-    //outputs.home = inputs.nunchuk_c;
-    // These seem inverted on xbox compared to what you'd expect??
+    // outputs.home = inputs.nunchuk_c;
+    //  These seem inverted on xbox compared to what you'd expect??
     outputs.rightStickClick = inputs.c_up;
     outputs.leftStickClick = inputs.c_left;
 
     // Right hand bottom row
     outputs.a = inputs.b;
     outputs.b = inputs.x;
-    outputs.triggerRDigital = inputs.z;
-    outputs.triggerLDigital = inputs.up;
+    outputs.triggerLDigital = inputs.z;
+    outputs.triggerRDigital = inputs.up;
 
     // Right hand top row
     outputs.x = inputs.r;
     outputs.y = inputs.y;
-    outputs.buttonR = inputs.lightshield;
-    outputs.buttonL = inputs.midshield;
-
+    outputs.buttonL = inputs.lightshield;
+    outputs.buttonR = inputs.midshield;
 
     // MY activates C-Stick to D-Pad conversion.
     if ((inputs.mod_y && !inputs.mod_x) || inputs.nunchuk_c) {
@@ -50,7 +49,6 @@ void FgcMode::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
         outputs.dpadDown = inputs.c_down;
         outputs.dpadUp = inputs.c_up;
     }
-
 }
 
 void FgcMode::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
