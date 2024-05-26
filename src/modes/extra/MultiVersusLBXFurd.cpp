@@ -139,6 +139,13 @@ void MultiVersusLBXFurd::UpdateAnalogOutputs(InputState &inputs, OutputState &ou
         outputs.rightStickY = ANALOG_STICK_NEUTRAL;
     }
 
+    // nunchuk_c converts right stick to D-Pad
+    if (inputs.nunchuk_c) {
+        // Also shut off C-Stick for D-Pad conversion.
+        outputs.rightStickX = ANALOG_STICK_NEUTRAL;
+        outputs.rightStickY = ANALOG_STICK_NEUTRAL;
+    }
+
     if (outputs.triggerLDigital) {
         outputs.triggerLAnalog = 140;
     }
