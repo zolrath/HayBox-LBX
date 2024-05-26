@@ -3,7 +3,7 @@
 #include "core/socd.hpp"
 #include "core/state.hpp"
 
-StriveKeyboardMode::StriveKeyboardMode(socd::SocdType socd_type) : KeyboardMode(socd_type) {}
+StriveKeyboardMode::StriveKeyboardMode(socd::SocdType socd_type) {}
 
 void StriveKeyboardMode::UpdateKeys(InputState &inputs) {
     // Left controls, left to right

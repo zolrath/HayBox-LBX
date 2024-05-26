@@ -8,6 +8,7 @@
 #include "modes/ProjectM.hpp"
 #include "modes/RivalsOfAether.hpp"
 #include "modes/Ultimate.hpp"
+#include "modes/extra/BindingModeLBX.hpp"
 #include "modes/extra/MultiVersusLBXFurd.hpp"
 #include "modes/extra/StriveKeyboardMode.hpp"
 
@@ -52,6 +53,10 @@ void select_mode(CommunicationBackend *backend) {
             set_mode(backend, new Ultimate(socd::SOCD_2IP));
         } else if (inputs.right) {
             set_mode(backend, new MultiVersusLBXFurd(socd::SOCD_2IP));
+        } else if (inputs.midshield) {
+            set_mode(backend, new BindingModeLBX(socd::SOCD_2IP));
+        } else if (inputs.a) {
+            set_mode(backend, new FgcMode(socd::SOCD_NEUTRAL, socd::SOCD_NEUTRAL));
         } else if (inputs.b) {
             set_mode(backend, new RivalsOfAether(socd::SOCD_2IP));
         }
